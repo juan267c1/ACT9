@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+
+
+public class Act10 {
+    
+   
+
+    
+
+    public static void main(String [] args) throws IOException, Exception{
+        Scanner sc = new Scanner(System.in);
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in)); 
+        Deck deck = new Deck();
+        int opc;
+        String reapeat;
+        do{
+            
+            
+            
+        System.out.println("Bienvenido a Poker! \nEliga una de las siguiebtes opciones que desea realizar ");
+        System.out.println("1) Mezclar deck\n2) Sacar una carta\n3) Carta al azar \n4) Generar una mano de 5 cartas\n0) salir");
+        opc = sc.nextInt();
+        if(opc>=5){
+           throw new Exception ("Hubo un erros , favor de verificar las opciones\n");   
+        }
+        if(deck==null){
+            throw new Exception("se acabaron las cartas  ");
+        }
+          switch(opc){
+              case 1:
+                   System.out.println("Mezclar deck");
+                    deck.shuffle();
+                    break;
+              case 2:
+                   System.out.println("Sacar una carta");
+                    deck.head();
+                   break;
+              case 3:
+                   System.out.println("Sacar una carta al azar");
+                    deck.pick();
+                    break;
+              case 4:
+                   System.out.println("Mano de 5 cartas");
+                   System.out.println(deck.hand().toString());
+                   break;
+              case 0:
+                  System.out.println("Gracias por juagar");
+                  System.exit(opc);
+                  break;
+
+          }System.out.println("Repetir menu?\n si o no");
+        reapeat=lector.readLine();
+        }while(reapeat.equals("si"));
+     
+    }
+}
